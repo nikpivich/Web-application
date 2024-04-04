@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <h1>Calculator</h1>
+    <form method="post" action="{% url 'calculator:calculate' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Calculate</button>
+    </form>
+
+    <h2>Recent Calculations:</h2>
+    <ul>
+        {% for calculation in calculations %}
+            <li>{{ calculation }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
